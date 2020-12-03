@@ -15,8 +15,10 @@
     "yarn": "^1.22.10"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",                                 
+    "start": "react-scripts start", 
+    "build": "yarn --cwd client install && yarn --cwd client build",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "yarn build && yarn deploy",                                 
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
