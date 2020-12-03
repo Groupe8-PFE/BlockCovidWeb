@@ -1,11 +1,11 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import './App.css';
 
-// Script2 package.json --> "build": "react-scripts build",
+// Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/",
 const App = () => {
   useEffect(() => {
     axios.get('/api/bears')
