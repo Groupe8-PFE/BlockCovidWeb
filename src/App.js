@@ -5,7 +5,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import './App.css';
 
-// script package.json --> "build": "react-scripts build",
+// Script2 package.json --> "build": "react-scripts build",
 const App = () => {
   useEffect(() => {
     axios.get('/api/bears')
