@@ -5,7 +5,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import './App.css';
 // .catch(error => console.log(error))
-// Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/",  "build": "react-scripts build",
+// Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
 const App = () => {
   useEffect(() => {
     axios.get('/api/bears')
