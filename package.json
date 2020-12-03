@@ -16,7 +16,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "yarn --cwd BlockCovidWeb install && yarn --cwd BlockCovidWeb build",
+    "deploy": "cp -a BlockCovidWeb/build/. public/",
+    "heroku-postbuild": "yarn build && yarn deploy",                                  
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -37,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": "14.8.0",
+    "yarn": "1.22.4"
   }
 }
