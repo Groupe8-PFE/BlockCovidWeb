@@ -12,7 +12,7 @@
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4",
-    "yarn": "^1.22.4"
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,6 +41,6 @@
   },
   "engines": {
     "node": "14.8.0",
-    "yarn": "1.22.4"
+    "yarn": "1.22.10"
   }
 }
