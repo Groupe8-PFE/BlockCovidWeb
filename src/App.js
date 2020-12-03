@@ -16,8 +16,8 @@ const App = () => {
           <ul>
             {bears.map((b,idx) => {
               return (
-                  <li>
-                    {idx}. {b}
+                  <li key={idx}>
+                     {b}
                   </li>
               )
             })}
