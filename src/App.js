@@ -8,11 +8,12 @@ import './App.css';
 // Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
 const App = () => {
   useEffect(() => {
+    console.log('test')
     axios.get('/api/bears')
         .then(res => setBears(res.data))
        
   }, []);
-
+  console.log('testklk')
   const [bears, setBears] = useState([]);
 
   return (
