@@ -1,17 +1,28 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios'
+import Api from './api'
+
 // .catch(error => console.log(error))
 // Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
 const App = () => {
   const [bears, setBears] = useState([]);
   
+  /*
   useEffect(() => {
     
     axios.get('/api/bears')
         .then(res => setBears(res.data))
   }, []);
+  */
+ 
+ useEffect(() => {
+  Api
+      .getAll()
+      .then(initialApi => {
+          console.log('promise fulfilled')
+          setBears(initialApi)
+      })
+}, [])
   
-
   return (
       <div className="App">
         <h2>Bears in Canada:</h2>
