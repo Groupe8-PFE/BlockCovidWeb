@@ -16,7 +16,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "yarn --cwd BlockCovidWeb install && yarn --cwd BlockCovidWeb build",
     "deploy": "cp -a BlockCovidWeb/build/. public/",                                 
     "test": "react-scripts test",
     "eject": "react-scripts eject"
