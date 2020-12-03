@@ -4,11 +4,14 @@ import axios from 'axios'
 // Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
 const App = () => {
   const [bears, setBears] = useState([]);
+  
   useEffect(() => {
+    
     axios.get('/api/bears')
         .then(res => setBears(res.data))
-       
   }, []);
+  
+
   return (
       <div className="App">
         <h2>Bears in Canada:</h2>

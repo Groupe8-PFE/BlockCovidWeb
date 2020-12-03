@@ -42,5 +42,6 @@
     "node": "12.18.4",
     "yarn": "1.22.10",
     "npm": "6.14.6"
-  }
+  },
+  "proxy": "https://blockcovid-api.herokuapp.com"
 }
