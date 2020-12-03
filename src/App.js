@@ -14,6 +14,7 @@ const App = () => {
   }, []);
   */
  
+  /*
  useEffect(() => {
   Api
       .getAll()
@@ -22,7 +23,8 @@ const App = () => {
           setBears(initialApi)
       })
 }, [])
-  
+  */
+ 
   return (
       <div className="App">
         <h2>Bears in Canada:</h2>
