@@ -10,7 +10,7 @@ const App = () => {
   useEffect(() => {
     axios.get('/api/bears')
         .then(res => setBears(res.data))
-        .catch(error => console.log(error))
+//.catch(error => console.log(error))
   }, []);
 
   const [bears, setBears] = useState([]);
