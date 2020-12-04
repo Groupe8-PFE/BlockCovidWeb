@@ -22,12 +22,13 @@ const AppContainer = () => {
         prenom: nouveauPrenom,
         inami: nouveauInami,
         telephone: nouveauTelephone,
-        mail: nouveauMail,
+        email: nouveauMail,
         rue: nouveauRue,
         ville: nouveauVille,
         codePostal: nouveauCodePostal
     }
 
+    console.log(medecinObjet)
     webService
     .creeMedecin(medecinObjet)
     .then(medecinRenvoye => {

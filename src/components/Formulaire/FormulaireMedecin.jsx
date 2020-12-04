@@ -47,6 +47,9 @@ const FormulaireMedecin = (props) => {
                         value={props.nouveauCodePostal}
                         onChange={props.changementCodePostal} />
                     </div>
+                    <div> 
+                        <button type="submit"> S'inscrire </button>
+                    </div>
                 </div>
             </form>
         </div>
