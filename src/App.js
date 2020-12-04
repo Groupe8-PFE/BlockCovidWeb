@@ -5,6 +5,7 @@ import Api from './api'
 // Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
 const App = () => {
   const [bears, setBears] = useState([]);
+  const [users, setUsers] = useState([]);
   
   /*
   useEffect(() => {
@@ -17,12 +18,23 @@ const App = () => {
   
  useEffect(() => {
   Api
-      .getAll()
+      .getAllBears()
       .then(initialApi => {
           console.log('promise fulfilled')
           setBears(initialApi)
       })
 }, [])
+
+useEffect(()=> {
+  Api
+      .getAllUsers()
+      .then(initialApi=> {
+        console.log('promise fulfilled')
+        setUsers(initialApi)
+      })
+},[])
+
+
   
 
   return (
@@ -38,6 +50,19 @@ const App = () => {
               )
             })}
           </ul>
+        </div>
+        
+        <div>
+        <h2> Users </h2>
+        <ul>
+          {users.map((user,id) => {
+            return (
+              <li key={id}>
+                Name : {user}
+              </li>
+            )
+          })}
+        </ul>
         </div>
       </div>
   );

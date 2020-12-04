@@ -1,6 +1,6 @@
 import axios from 'axios'
-const API_ROOT = '/api/bears';
-
+const API_BEARS = '/api/bears';
+const API_USERS = '/api/users';
 
 const token = localStorage.getItem("token");
 
@@ -13,13 +13,20 @@ const headers = {
 
 
 
-const getAll = () => {
+const getAllBears = () => {
     console.log('test')
-    const request = axios.get(API_ROOT)
+    const request = axios.get(API_BEARS,headers)
+    const rep = request.then(response=> response.data)
+    console.log(rep)
+    return rep
+}
+const getAllUsers = () => {
+    console.log('test')
+    const request = axios.get(API_USERS,headers)
     const rep = request.then(response=> response.data)
     console.log(rep)
     return rep
 }
 
 
-export default {getAll}
+export default {getAllBears,getAllUsers}
