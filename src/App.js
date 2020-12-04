@@ -15,7 +15,7 @@ const App = () => {
   }, []);
   */
  
-  
+  /*
  useEffect(() => {
   Api
       .getAllBears()
@@ -24,6 +24,7 @@ const App = () => {
           setBears(initialApi)
       })
 }, [])
+*/
 
 useEffect(()=> {
   Api
@@ -39,6 +40,7 @@ useEffect(()=> {
 
   return (
       <div className="App">
+        {/*}
         <h2>Bears in Canada:</h2>
         <div>
           <ul>
@@ -51,6 +53,7 @@ useEffect(()=> {
             })}
           </ul>
         </div>
+          {*/}
         
         <div>
         <h2> Users </h2>
