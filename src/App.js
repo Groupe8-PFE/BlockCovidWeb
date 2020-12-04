@@ -55,10 +55,10 @@ useEffect(()=> {
         <div>
         <h2> Users </h2>
         <ul>
-          {users.map((user,id) => {
+          {users.map((user) => {
             return (
-              <li key={id}>
-                Name : {user}
+              <li key={user.id}>
+                Name : {user.name}
               </li>
             )
           })}
