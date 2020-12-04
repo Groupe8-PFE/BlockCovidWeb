@@ -15,7 +15,7 @@ const headers = {
 
 const getAll = () => {
     console.log('test')
-    const request = axios.get(API_ROOT,headers)
+    const request = axios.get(API_ROOT)
     const rep = request.then(response=> response.data)
     console.log(rep)
     return rep
