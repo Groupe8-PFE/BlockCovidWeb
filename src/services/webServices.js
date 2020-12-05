@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_MEDECINS = '/api/medecins';
+const API_MEDECINS = 'https://blockcovid-api.herokuapp.com/api/medecins';
 
 const token = localStorage.getItem("token");
 
