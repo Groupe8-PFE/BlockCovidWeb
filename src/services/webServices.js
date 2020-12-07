@@ -21,12 +21,17 @@ const headers = {
 
 const tousMedecins = () => {
     const request = axios.get(API_MEDECINS,headers)
-    return request.then(response=> response.data)
+    return request.then(response => response.data)
 }
 
-const creeMedecin = newObject => {
-  const request = axios.post(API_MEDECINS, newObject)
-  return request.then(response => response.data)
+const creeMedecin = nouveauObjet => {
+    const request = axios.post(API_MEDECINS, nouveauObjet)
+    return request.then(response => response.data)
 }
 
-export default {tousMedecins, creeMedecin}
+const seConnecter = nouveauObjet => {
+    const request = axios.post(API_MEDECINS, nouveauObjet)
+    return request.then(response => response.data)
+}
+
+export default { tousMedecins, creeMedecin, seConnecter }

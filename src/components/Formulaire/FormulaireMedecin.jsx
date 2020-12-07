@@ -1,51 +1,79 @@
-import React  from 'react';
+import React, { useContext }  from 'react';
+import BlockCovidContext from "../../contexts/BlockCovidContext"
 
-const FormulaireMedecin = (props) => {
+const FormulaireMedecin = () => {
+    const { nouveauNom,
+            nouveauPrenom,
+            nouveauInami,
+            nouveauTelephone,
+            nouveauEmail,
+            nouveauMotDePasse,
+            nouveauRue,
+            nouveauVille,
+            nouveauCodePostal,
+            ajouterMedecin,
+            changementNom,
+            changementPrenom,
+            changementInami,
+            changementTelephone,
+            changementEmail,
+            changementMotDePasse,
+            changementRue,
+            changementVille,
+            changementCodePostal } = useContext(BlockCovidContext)
+    
     return (
         <div>
             <h2>Formulaire d'inscription Medecin</h2>
-            <form onSubmit={props.ajouterMedecin}>
+            <form onSubmit={ajouterMedecin}>
                 <div>
                     Nom : <input
-                        value={props.nouveauNom}
-                        onChange={props.changementNom} />
+                        value={nouveauNom}
+                        onChange={changementNom} />
                 </div>
                 <div>
                     Prenom : <input
-                        value={props.nouveauPrenom}
-                        onChange={props.changementPrenom} />
+                        value={nouveauPrenom}
+                        onChange={changementPrenom} />
                 </div>
                 <div>
                     Inami : <input
-                        value={props.nouveauInami}
-                        onChange={props.changementInami} />
+                        value={nouveauInami}
+                        onChange={changementInami} />
                 </div>
                 <div>
                     Telephone : <input
-                        value={props.nouveauTelephone}
-                        onChange={props.changementTelephone} />
+                        value={nouveauTelephone}
+                        onChange={changementTelephone} />
                 </div>
                 <div>
                     Mail : <input
-                        value={props.nouveauMail}
-                        onChange={props.changementMail} />
+                        type="mail"
+                        value={nouveauEmail}
+                        onChange={changementEmail} />
+                </div>
+                <div>
+                    Mot de passe : <input
+                        type="password" 
+                        value={nouveauMotDePasse}
+                        onChange={changementMotDePasse} />
                 </div>
                 <div>
                     <h4>Adresse</h4>
                     <div>
                         Rue et numéro : <input
-                        value={props.nouveauRue}
-                        onChange={props.changementRue} />
+                        value={nouveauRue}
+                        onChange={changementRue} />
                     </div>
                     <div>
                         Ville : <input
-                        value={props.nouveauVille}
-                        onChange={props.changementVille} />
+                        value={nouveauVille}
+                        onChange={changementVille} />
                     </div>
                     <div>
                         Code postal : <input
-                        value={props.nouveauCodePostal}
-                        onChange={props.changementCodePostal} />
+                        value={nouveauCodePostal}
+                        onChange={changementCodePostal} />
                     </div>
                     <div> 
                         <button type="submit"> S'inscrire </button>

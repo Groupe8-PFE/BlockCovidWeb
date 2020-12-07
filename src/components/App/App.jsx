@@ -1,21 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import {
+  Switch, Route
+} from "react-router-dom"
+
 import FormulaireMedecin from "../Formulaire/FormulaireMedecin"
-import Api from '../../api'
+import Menu from "../Menu/Menu"
+import Connexion from "../Formulaire/FormulaireConnexion"
+import Accueil from '../Accueil/Accueil';
+
 
 // .catch(error => console.log(error))
 // Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
-const App = (props) => {
+const App = () => {
   
   return (
     <div>
-      <FormulaireMedecin ajouterMedecin={props.ajouterMedecin}
-              nouveauNom={props.nouveauNom} nouveauPrenom={props.nouveauPrenom}
-              nouveauInami={props.nouveauInami} nouveauTelephone={props.nouveauTelephone}
-              nouveauMail={props.nouveauMail} nouveauRue={props.nouveauRue} nouveauVille={props.nouveauVille}
-              nouveauCodePostal={props.nouveauCodePostal} changementNom={props.changementNom}
-              changementPrenom={props.changementPrenom} changementInami={props.changementInami}
-              changementTelephone={props.changementTelephone} changementMail={props.changementMail}
-              changementRue={props.changementRue} changementVille={props.changementVille} changementCodePostal={props.changementCodePostal} />
+      <Menu />
+      <Switch>
+        <Route path="/connexion">
+          <Connexion />
+        </Route>
+        <Route path="/inscription">
+          <FormulaireMedecin />
+        </Route>
+        <Route path="/">
+          <Accueil />
+        </Route>
+      </Switch>
     </div>
   )
 }
