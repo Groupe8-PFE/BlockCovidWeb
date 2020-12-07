@@ -63,7 +63,7 @@ const ProviderWrapper = (props) => {
         event.preventDefault()
         const connexionObjet = {
             email: nouveauEmail,
-            motDePasse: nouveauMotDePasse,
+            mot_de_passe_hash: nouveauMotDePasse,
         }
 
         console.log(connexionObjet)
@@ -76,6 +76,7 @@ const ProviderWrapper = (props) => {
             )
             .catch(error => {
                 console.warn(error)
+                history.push('/')
             })
     }
 
