@@ -4,8 +4,9 @@ const API_MEDECINS = 'https://blockcovid-api.herokuapp.com/api/medecins';
 const API_LOGIN = 'https://blockcovid-api.herokuapp.com/api/login';
 */
 
-const API_MEDECINS = 'localhost:8000/api/medecins';
-const API_LOGIN = 'localhost:8000/api/login';
+const API_MEDECINS = 'http://localhost:8000/api/medecins';
+const API_LOGIN = 'http://localhost:8000/api/login';
+const API_ETABLISSEMENTS = 'http://localhost:8080/api/etablissements'
 
 const token = localStorage.getItem("token");
 
@@ -25,7 +26,7 @@ const headers = {
 }*/
 
 const tousMedecins = () => {
-    const request = axios.get(API_MEDECINS,headers)
+    const request = axios.get(API_MEDECINS, headers)
     return request.then(response => response.data)
 }
 
@@ -39,4 +40,10 @@ const seConnecter = nouveauObjet => {
     return request.then(response => response.data)
 }
 
-export default { tousMedecins, creeMedecin, seConnecter }
+const creeEtablissement = nouveauObjet => {
+    const request = axios.post(API_ETABLISSEMENTS, nouveauObjet, headers)
+    return request.then(response => response.data)
+}
+
+// eslint-disable-next-line
+export default { tousMedecins, creeMedecin, seConnecter, creeEtablissement }
