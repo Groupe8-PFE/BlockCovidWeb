@@ -1,7 +1,6 @@
 import React from 'react'
 import {
-    BrowserRouter as Router,
-    Link
+  Link
 } from "react-router-dom"
 
 const Menu = () => {
@@ -10,11 +9,10 @@ const Menu = () => {
   }
   return (
     <div>
-        <div>
-          <Link style={padding} to="/">Accueil</Link>
-          <Link style={padding} to="/connexion">Connexion</Link>
-          <Link style={padding} to="/inscription">Inscription</Link>
-        </div>
+      <div>
+        <Link style={padding} to="/">Connexion</Link>
+        <Link style={padding} to="/inscription">Inscription</Link>
+      </div>
     </div>
   )
 }

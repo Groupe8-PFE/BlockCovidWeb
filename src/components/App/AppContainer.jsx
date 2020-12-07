@@ -12,7 +12,7 @@ const AppContainer = () => {
   return (
     <Router>
       <BlockCovidContext>
-          <App />
+        <App />
       </BlockCovidContext>
     </Router>
   )
