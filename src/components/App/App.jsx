@@ -12,11 +12,19 @@ import webService from "../../services/webServices";
 // Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
 const App = () => {
   const token = webService.recupererTokenCourant()
-  if (token === null) {
+  console.log(token)
+  if (!token) {
     return (
       <div>
-        <Menu />
-        <FormulaireConnexion />
+       <Menu />
+      <Switch>
+        <Route path="/inscription">
+          <FormulaireInscription />
+        </Route>
+        <Route path="/">
+          <FormulaireConnexion />
+        </Route>
+      </Switch>
       </div>
     )
   }
@@ -24,17 +32,11 @@ const App = () => {
     <div>
       <Menu />
       <Switch>
-        <Route path="/inscription">
-          <FormulaireInscription />
-        </Route>
         <Route path="/accueil/medecin">
           <AccueilMedecin />
         </Route>
         <Route path="/accueil/etablissement">
           <AccueilEtablissement />
-        </Route>
-        <Route path="/">
-          <FormulaireConnexion />
         </Route>
       </Switch>
     </div>

@@ -109,14 +109,25 @@ const ProviderWrapper = (props) => {
       .then((response) => {
         setNouveauEmail("")
         setNouveauMotDePasse("")
-        localStorage.setItem("token", 'Bearer ' + JSON.stringify(response.data))
-        history.push("/accueil/medecin")
+        if(response.token) {
+          console.log(response.token)
+          localStorage.setItem("token", 'Bearer ' + JSON.stringify(response.token))
+          history.push("/accueil/medecin")
+        }
+        else {
+          history.push("/")
+        }
+       
       })
       .catch((error) => {
         console.warn(error);
         history.push("/");
       });
   };
+
+  const seDeconnecter = (event) => {
+    localStorage.removeItem("token")
+  }
 
   const sInscrire = (event) => {
     event.preventDefault();
@@ -212,6 +223,7 @@ const ProviderWrapper = (props) => {
     nouveauCodePostalEtablissement,
     ajouterMedecin,
     seConnecter,
+    seDeconnecter,
     sInscrire,
     ajouterEtablissement,
     changementNom,

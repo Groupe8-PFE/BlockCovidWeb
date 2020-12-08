@@ -38,6 +38,7 @@ const creeMedecin = nouveauObjet => {
 
 const seConnecter = nouveauObjet => {
     const request = axios.post(API_LOGIN, nouveauObjet, headers)
+    console.log(token)  
     return request.then(response => response.data)
 }
 
