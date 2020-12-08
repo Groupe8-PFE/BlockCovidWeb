@@ -106,11 +106,12 @@ const ProviderWrapper = (props) => {
     console.log(connexionObjet);
     webService
       .seConnecter(connexionObjet)
-      .then(
+      .then((response) => {
         setNouveauEmail(""),
-        setNouveauMotDePasse(""),
-        history.push("/accueil/medecin")
-      )
+          setNouveauMotDePasse(""),
+          localStorage.setItem("token", 'Bearer ' + JSON.stringify(response.data)),
+          history.push("/accueil/medecin")
+      })
       .catch((error) => {
         console.warn(error);
         history.push("/");

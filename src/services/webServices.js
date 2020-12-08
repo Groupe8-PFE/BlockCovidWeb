@@ -10,6 +10,7 @@ const API_ETABLISSEMENTS = 'http://localhost:8080/api/etablissements'
 
 const token = localStorage.getItem("token");
 
+
 const headers = {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -45,5 +46,13 @@ const creeEtablissement = nouveauObjet => {
     return request.then(response => response.data)
 }
 
+const seDeconnecter = () => {
+    localStorage.removeItem("token")
+}
+
+const recupererTokenCourant = () => {
+    return token
+}
+
 // eslint-disable-next-line
-export default { tousMedecins, creeMedecin, seConnecter, creeEtablissement }
+export default { tousMedecins, creeMedecin, seConnecter, creeEtablissement, recupererTokenCourant }
