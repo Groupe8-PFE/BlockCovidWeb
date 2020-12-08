@@ -6,7 +6,7 @@ import webService from "../services/webServices";
 const Context = React.createContext(null);
 
 const ProviderWrapper = (props) => {
-  const [medecin, setMedecin] = useState();
+  const [medecin, setMedecin] = useState("");
   const [medecins, setMedecins] = useState([]);
   const [etablissements, setEtablissements] = useState([]);
   const [nouveauNom, setNouveauNom] = useState("");
@@ -77,14 +77,12 @@ const ProviderWrapper = (props) => {
     event.preventDefault();
     const EtablissementObjet = {
       nom_etablissement: nouveauNomEtablissement,
-      email: nouveauEmailEtablissement,
-      motDePasse: nouveauMotDePasseEtablissement,
       rue: nouveauRueEtablissement,
       ville: nouveauVilleEtablissement,
-      codePostal: nouveauCodePostalEtablissement,
+      code_postal: nouveauCodePostalEtablissement,
+      email: nouveauEmailEtablissement,
+      password: nouveauMotDePasseEtablissement,
     };
-
-    console.log(EtablissementObjet);
     webService
       .creeEtablissement(EtablissementObjet)
       .then((etablissementRenvoye) => {
@@ -98,6 +96,7 @@ const ProviderWrapper = (props) => {
         history.push("/accueil/etablissement");
       })
       .catch((error) => {
+        console.log("ouiiiii")
         console.warn(error);
       });
   };
@@ -119,7 +118,7 @@ const ProviderWrapper = (props) => {
           //recevoirMedecin(response.medecin.id)
           localStorage.setItem(
             "token",
-            "Bearer " + JSON.stringify(response.token)
+            "Bearer " + response.token
           );
           history.push("/accueil/medecin");
         } else {
@@ -233,7 +232,7 @@ const ProviderWrapper = (props) => {
     webService.medecinCourant()
     .then((initialiserMedecins) => {
       console.log("promesse remplie", initialiserMedecins);
-      setMedecin(initialiserMedecins.medecin);
+      setMedecin(initialiserMedecins);
     })
     .catch((error) => {
       console.log(error);

@@ -8,7 +8,7 @@ const API_MEDECINS = 'http://localhost:8000/api/medecins';
 const API_MEDECIN = 'http://localhost:8000/api/authMedecin';
 const API_LOGIN_MEDECIN = 'http://localhost:8000/api/loginMedecin';
 const API_LOGIN_ETABLISSEMENT = 'http://localhost:8000/api/loginEtablissement';
-const API_ETABLISSEMENTS = 'http://localhost:8080/api/authEtablissement'
+const API_ETABLISSEMENTS = 'http://localhost:8000/api/etablissements'
 
 
 const token = localStorage.getItem("token");
@@ -52,15 +52,16 @@ const seConnecterEtablissement = nouveauObjet => {
 }
 
 const creeEtablissement = nouveauObjet => {
+    console.log("nouveau objet : " + nouveauObjet)
     const request = axios.post(API_ETABLISSEMENTS, nouveauObjet, headers)
-    return request.then(response => response.data)
+    const returnedValue = request.then(response => response.data)
+    return returnedValue
 }
 
 const medecinCourant = () => {
     const request = axios.get(API_MEDECIN, { headers: {"Authorization" : `${token}`}})
-    const jvaismependre = request.then(response => response.data)
-    console.log("Je vais me pendre", jvaismependre)
-    return jvaismependre
+    const returnedValue = request.then(response => response.data)
+    return returnedValue
 }
 
 // eslint-disable-next-line
