@@ -5,8 +5,11 @@ const API_LOGIN = 'https://blockcovid-api.herokuapp.com/api/login';
 */
 
 const API_MEDECINS = 'http://localhost:8000/api/medecins';
-const API_LOGIN = 'http://localhost:8000/api/login';
-const API_ETABLISSEMENTS = 'http://localhost:8080/api/etablissements'
+const API_MEDECIN = 'http://localhost:8000/api/authMedecin';
+const API_LOGIN_MEDECIN = 'http://localhost:8000/api/loginMedecin';
+const API_LOGIN_ETABLISSEMENT = 'http://localhost:8000/api/loginEtablissement';
+const API_ETABLISSEMENTS = 'http://localhost:8080/api/authEtablissement'
+
 
 const token = localStorage.getItem("token");
 
@@ -36,8 +39,14 @@ const creeMedecin = nouveauObjet => {
     return request.then(response => response.data)
 }
 
-const seConnecter = nouveauObjet => {
-    const request = axios.post(API_LOGIN, nouveauObjet, headers)
+const seConnecterMedecin = nouveauObjet => {
+    const request = axios.post(API_LOGIN_MEDECIN, nouveauObjet, headers)
+    console.log(token)  
+    return request.then(response => response.data)
+}
+
+const seConnecterEtablissement = nouveauObjet => {
+    const request = axios.post(API_LOGIN_ETABLISSEMENT, nouveauObjet, headers)
     console.log(token)  
     return request.then(response => response.data)
 }
@@ -47,13 +56,12 @@ const creeEtablissement = nouveauObjet => {
     return request.then(response => response.data)
 }
 
-const seDeconnecter = () => {
-    localStorage.removeItem("token")
-}
-
-const recupererTokenCourant = () => {
-    return token
+const medecinCourant = () => {
+    const request = axios.get(API_MEDECIN, { headers: {"Authorization" : `${token}`}})
+    const jvaismependre = request.then(response => response.data)
+    console.log("Je vais me pendre", jvaismependre)
+    return jvaismependre
 }
 
 // eslint-disable-next-line
-export default { tousMedecins, creeMedecin, seConnecter, creeEtablissement, recupererTokenCourant, seDeconnecter }
+export default { tousMedecins, creeMedecin, seConnecterMedecin, seConnecterEtablissement, creeEtablissement, medecinCourant }

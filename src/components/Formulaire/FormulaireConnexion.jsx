@@ -10,6 +10,7 @@ const FormulaireConnexion = () => {
     sInscrire,
     changementEmail,
     changementMotDePasse,
+    token,
   } = useContext(BlockCovidContext);
 
   return (
