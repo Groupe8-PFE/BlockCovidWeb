@@ -55,4 +55,4 @@ const recupererTokenCourant = () => {
 }
 
 // eslint-disable-next-line
-export default { tousMedecins, creeMedecin, seConnecter, creeEtablissement, recupererTokenCourant }
+export default { tousMedecins, creeMedecin, seConnecter, creeEtablissement, recupererTokenCourant, seDeconnecter }

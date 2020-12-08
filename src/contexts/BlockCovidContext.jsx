@@ -39,7 +39,7 @@ const ProviderWrapper = (props) => {
       inami: nouveauInami,
       telephone: nouveauTelephone,
       email: nouveauEmail,
-      motDePasse: nouveauMotDePasse,
+      password: nouveauMotDePasse,
       rue: nouveauRue,
       ville: nouveauVille,
       codePostal: nouveauCodePostal,
@@ -100,17 +100,17 @@ const ProviderWrapper = (props) => {
     event.preventDefault();
     const connexionObjet = {
       email: nouveauEmail,
-      mot_de_passe_hash: nouveauMotDePasse,
+      password: nouveauMotDePasse,
     };
 
     console.log(connexionObjet);
     webService
       .seConnecter(connexionObjet)
       .then((response) => {
-        setNouveauEmail(""),
-          setNouveauMotDePasse(""),
-          localStorage.setItem("token", 'Bearer ' + JSON.stringify(response.data)),
-          history.push("/accueil/medecin")
+        setNouveauEmail("")
+        setNouveauMotDePasse("")
+        localStorage.setItem("token", 'Bearer ' + JSON.stringify(response.data))
+        history.push("/accueil/medecin")
       })
       .catch((error) => {
         console.warn(error);

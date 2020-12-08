@@ -6,10 +6,20 @@ import Menu from "../Menu/Menu";
 import FormulaireConnexion from "../Formulaire/FormulaireConnexion";
 import AccueilMedecin from "../Accueil/AccueilMedecin";
 import AccueilEtablissement from "../Accueil/AccueilEtablissement";
+import webService from "../../services/webServices";
 
 // .catch(error => console.log(error))
 // Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
 const App = () => {
+  const token = webService.recupererTokenCourant()
+  if (token === null) {
+    return (
+      <div>
+        <Menu />
+        <FormulaireConnexion />
+      </div>
+    )
+  }
   return (
     <div>
       <Menu />
