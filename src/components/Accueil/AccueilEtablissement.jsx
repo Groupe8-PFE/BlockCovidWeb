@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
-
+import FormulaireLieu from "../Formulaire/FormulaireLieu"
 import BlockCovidContext from "../../contexts/BlockCovidContext";
 import LieuxList from "../LieuList/LieuxList";
 
@@ -14,8 +14,12 @@ const AccueilEtablissement = () => {
     return (
       <div>
         <h1> Bienvenue sur la page d'accueil de l'établissement </h1>
-        <LieuxList lieux={lieux}></LieuxList>
-        <button onClick={seDeconnecter}> Se deconnecter </button>
+        <div className="container" id="container">
+          <LieuxList lieux={lieux}></LieuxList>
+          <FormulaireLieu></FormulaireLieu>
+          <p></p>
+          <button onClick={seDeconnecter}> Se deconnecter </button>
+        </div>
       </div>
     );
   }

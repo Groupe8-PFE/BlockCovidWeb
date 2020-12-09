@@ -36,8 +36,8 @@ const seConnecterMedecin = (nouveauObjet, typeConnexion) => {
     if(typeConnexion === "etablissement"){
         console.log("Connexion etablissement ooook")
         API = API_LOGIN_ETABLISSEMENT
-        console.log("API utilisé", API)
     }
+    console.log("API utilisé", API)
     const request = axios.post(API, nouveauObjet, headers)
     return request.then(response => response.data)
 }
@@ -51,12 +51,14 @@ const creeEtablissement = nouveauObjet => {
 
 const medecinCourant = () => {
     const request = axios.get(API_MEDECIN, { headers: {"Authorization" : `${token}`}})
+    console.log("Medecin courant", API_MEDECIN)
     const returnedValue = request.then(response => response.data)
     return returnedValue
 }
 
 const etablissementCourant = () => {
     const request = axios.get(API_ETABLISSEMENT, { headers: {"Authorization" : `${token}`}})
+    console.log("Etablissement courant", API_ETABLISSEMENT)
     const returnedValue = request.then(response => response.data)
     return returnedValue
 }
@@ -72,6 +74,17 @@ const lieuxEtablissement = idEtablissement => {
     return returnedValue
 }
 
+const creeCodeQR = nouveauObjet => {
+    const request = axios.get(`http://localhost:8000/api/etablissements/${nouveauObjet.etablissement_id}/lieus/${nouveauObjet.lieu_id}`)
+    const returnedValue = request.then(response => response.data)
+    return returnedValue
+}
+
+const creeLieu = nouveauObjet => {
+    const request = axios.post(`http://localhost:8000/api/etablissements/${nouveauObjet.etablissement_id}/lieus`, nouveauObjet, headers)
+    return request.then(response => response.data)
+}
+
 // eslint-disable-next-line
 export default { tousMedecins, creeMedecin, seConnecterMedecin, creeEtablissement, medecinCourant, 
-    etablissementCourant, recevoirQRCode, lieuxEtablissement }
+    etablissementCourant, recevoirQRCode, lieuxEtablissement, creeCodeQR, creeLieu }

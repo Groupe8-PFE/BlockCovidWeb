@@ -10,7 +10,7 @@ const ProviderWrapper = (props) => {
   const [medecins, setMedecins] = useState([]);
   const [etablissements, setEtablissements] = useState([]);
   const [etablissement, setEtablissement] = useState("")
-  const [QRCodeMedecin, setQRCodeMedecin] = useState("")
+  const [QRCode, setQRCode] = useState("")
   const [nouveauNom, setNouveauNom] = useState("");
   const [nouveauNomEtablissement, setNouveauNomEtablissement] = useState("");
   const [nouveauPrenom, setNouveauPrenom] = useState("");
@@ -36,6 +36,7 @@ const ProviderWrapper = (props) => {
     nouveauCodePostalEtablissement,
     setNouveauCodePostalEtablissement,
   ] = useState("");
+  const [nouveauDescription, setNouveauDescription] = useState("")
   const [ typeConnexion, setTypeConnexion ] = useState("medecin")
   const [lieux, setLieux] = useState([])
   const history = useHistory();
@@ -116,7 +117,7 @@ const ProviderWrapper = (props) => {
     webService
       .seConnecterMedecin(connexionObjet, typeConnexion)
       .then((response) => {
-        console.log(response.etablissement);
+        //console.log(response.etablissement);
         setNouveauEmail("");
         setNouveauMotDePasse("");
         if (response.token) {
@@ -155,22 +156,6 @@ const ProviderWrapper = (props) => {
       });
   };*/
 
-  const recevoirQRCode = () => {
-    webService
-    .recevoirQRCode(medecin.id)
-    .then((response) => {
-      console.log("Response pour le QR code : ", response)
-      const QRCodeRenvoye = {
-        id: response.medecin.id,
-        QRCode: response.svg
-      }
-      setQRCodeMedecin(QRCodeRenvoye)
-    })
-    .catch((error) => {
-      console.warn(error);
-    });
-  }
-
   const seDeconnecter = () => {
     localStorage.removeItem("token");
     history.push("/");
@@ -190,6 +175,41 @@ const ProviderWrapper = (props) => {
       })
       .catch((error) => {
         console.log(error);
+      })
+  }
+
+  const ajouterLieu = (event) => {
+    event.preventDefault();
+    const LieuObjet = {
+      nom: nouveauNom,
+      description: nouveauDescription,
+      etablissement_id: etablissement.id,
+    };
+    webService
+      .creeLieu(LieuObjet)
+      .then((lieuRenvoye) => {
+        setNouveauNom("");
+        setNouveauDescription("");
+      })
+      .catch((error) => {
+        console.warn(error);
+      })
+  }
+
+  const genererCodeQR = (lieu_id) => {
+    const QRObjet = {
+      etablissement_id: etablissement.id,
+      lieu_id: lieu_id
+    };
+    webService
+      .creeCodeQR(QRObjet)
+      .then((resultat) => {
+        setQRCode(resultat)
+        console.log("Resultat : ",resultat)
+        history.push('/qrcode')
+      })
+      .catch((error) => {
+        console.warn(error)
       })
   }
 
@@ -253,6 +273,10 @@ const ProviderWrapper = (props) => {
     setNouveauCodePostalEtablissement(e.target.value);
   };
 
+  const changementDescription = (e) => {
+    setNouveauDescription(e.target.value)
+  }
+
   const changementTypeConnexion = (e) => {
     console.log("Test type : ",e.target.value)
     setTypeConnexion(e.target.value);
@@ -274,7 +298,7 @@ const ProviderWrapper = (props) => {
       setMedecin(initialiserMedecin);
     })
     .catch((error) => {
-      //console.log(error);
+      console.log(error);
     })
   }, []);
 
@@ -286,7 +310,7 @@ const ProviderWrapper = (props) => {
       setEtablissement(initialiserEtablissement);
     })
     .catch((error) => {
-      //console.log(error);
+      console.log(error);
     })
   }, []);
 
@@ -313,8 +337,9 @@ const ProviderWrapper = (props) => {
     nouveauVilleEtablissement,
     nouveauCodePostal,
     nouveauCodePostalEtablissement,
+    nouveauDescription,
     typeConnexion,
-    QRCodeMedecin,
+    QRCode,
     history,
     token,
     ajouterMedecin,
@@ -323,7 +348,8 @@ const ProviderWrapper = (props) => {
     sInscrire,
     ajouterEtablissement,
     recevoirLieux,
-    recevoirQRCode,
+    ajouterLieu,
+    genererCodeQR,
     changementNom,
     changementNomEtablissement,
     changementPrenom,
@@ -340,6 +366,7 @@ const ProviderWrapper = (props) => {
     changementCodePostal,
     changementCodePostalEtablissement,
     changementTypeConnexion,
+    changementDescription
   };
 
   return (
