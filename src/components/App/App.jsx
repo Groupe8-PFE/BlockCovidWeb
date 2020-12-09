@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/accueil/medecin">
           <AccueilMedecin />
         </Route>
-        <Route path="/accueil/etablissements/:id">
+        <Route path="/accueil/etablissement">
           <AccueilEtablissement />
         </Route>
         <Route path="/">

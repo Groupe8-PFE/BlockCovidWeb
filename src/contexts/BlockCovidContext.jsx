@@ -9,6 +9,8 @@ const ProviderWrapper = (props) => {
   const [medecin, setMedecin] = useState("");
   const [medecins, setMedecins] = useState([]);
   const [etablissements, setEtablissements] = useState([]);
+  const [etablissement, setEtablissement] = useState("")
+  const [QRCodeMedecin, setQRCodeMedecin] = useState("")
   const [nouveauNom, setNouveauNom] = useState("");
   const [nouveauNomEtablissement, setNouveauNomEtablissement] = useState("");
   const [nouveauPrenom, setNouveauPrenom] = useState("");
@@ -34,6 +36,8 @@ const ProviderWrapper = (props) => {
     nouveauCodePostalEtablissement,
     setNouveauCodePostalEtablissement,
   ] = useState("");
+  const [ typeConnexion, setTypeConnexion ] = useState("medecin")
+  const [lieux, setLieux] = useState([])
   const history = useHistory();
   const token = localStorage.getItem("token");
 
@@ -103,24 +107,26 @@ const ProviderWrapper = (props) => {
 
   const seConnecter = (event) => {
     event.preventDefault();
+    console.log(typeConnexion)
     const connexionObjet = {
       email: nouveauEmail,
       password: nouveauMotDePasse,
     };
     console.log(connexionObjet);
     webService
-      .seConnecterMedecin(connexionObjet)
+      .seConnecterMedecin(connexionObjet, typeConnexion)
       .then((response) => {
-        console.log(response.medecin);
+        console.log(response.etablissement);
         setNouveauEmail("");
         setNouveauMotDePasse("");
         if (response.token) {
-          //recevoirMedecin(response.medecin.id)
+          //recevoirMedecin()
           localStorage.setItem(
             "token",
             "Bearer " + response.token
           );
-          history.push("/accueil/medecin");
+          if(typeConnexion === "medecin") history.push("/accueil/medecin");
+          else if (typeConnexion === "etablissement") history.push('/accueil/etablissement')
         } else {
           history.push("/");
         }
@@ -131,10 +137,10 @@ const ProviderWrapper = (props) => {
       });
   };
 
-  const recevoirMedecin = (id) => {
+  /**const recevoirMedecin = () => {
     console.log("Suce ma bite");
     webService
-      .medecinCourant(id)
+      .medecinCourant()
       .then((response) => {
         console.log("Response recevoir medecin : ", response.medecin);
         const medecinObjet = {
@@ -142,12 +148,28 @@ const ProviderWrapper = (props) => {
           prenom: response.medecin.prenom,
           id: response.medecin.id,
         };
-        setMedecin(medecinObjet.nom);
+        setMedecin(medecinObjet);
       })
       .catch((error) => {
         console.warn(error);
       });
-  };
+  };*/
+
+  const recevoirQRCode = () => {
+    webService
+    .recevoirQRCode(medecin.id)
+    .then((response) => {
+      console.log("Response pour le QR code : ", response)
+      const QRCodeRenvoye = {
+        id: response.medecin.id,
+        QRCode: response.svg
+      }
+      setQRCodeMedecin(QRCodeRenvoye)
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  }
 
   const seDeconnecter = () => {
     localStorage.removeItem("token");
@@ -158,6 +180,18 @@ const ProviderWrapper = (props) => {
     event.preventDefault();
     history.push("/inscription");
   };
+
+  const recevoirLieux = (id) => {
+    webService
+      .lieuxEtablissement(id)
+      .then((lieux) => {
+        console.log("Lieux recu : ", lieux)
+        setLieux(lieux)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
 
   const changementNom = (e) => {
     setNouveauNom(e.target.value);
@@ -219,6 +253,11 @@ const ProviderWrapper = (props) => {
     setNouveauCodePostalEtablissement(e.target.value);
   };
 
+  const changementTypeConnexion = (e) => {
+    console.log("Test type : ",e.target.value)
+    setTypeConnexion(e.target.value);
+  }
+
   /**useEffect(() => {
     console.log("effect");
     webService.tousMedecins().then((initialiserMedecins) => {
@@ -230,20 +269,35 @@ const ProviderWrapper = (props) => {
   useEffect(() => {
     console.log("effect");
     webService.medecinCourant()
-    .then((initialiserMedecins) => {
-      console.log("promesse remplie", initialiserMedecins);
-      setMedecin(initialiserMedecins);
+    .then((initialiserMedecin) => {
+      console.log("promesse remplie", initialiserMedecin);
+      setMedecin(initialiserMedecin);
     })
     .catch((error) => {
-      console.log(error);
+      //console.log(error);
     })
   }, []);
 
-  console.log("rendues ", medecins.length, " medecins");
+  useEffect(() => {
+    console.log("effect");
+    webService.etablissementCourant()
+    .then((initialiserEtablissement) => {
+      console.log("promesse remplie", initialiserEtablissement);
+      setEtablissement(initialiserEtablissement);
+    })
+    .catch((error) => {
+      //console.log(error);
+    })
+  }, []);
+
+  //console.log("rendues ", medecins.length, " medecins");
 
   const exposedValue = {
     medecins,
     medecin,
+    etablissements,
+    etablissement,
+    lieux,
     nouveauNom,
     nouveauNomEtablissement,
     nouveauPrenom,
@@ -259,6 +313,8 @@ const ProviderWrapper = (props) => {
     nouveauVilleEtablissement,
     nouveauCodePostal,
     nouveauCodePostalEtablissement,
+    typeConnexion,
+    QRCodeMedecin,
     history,
     token,
     ajouterMedecin,
@@ -266,6 +322,8 @@ const ProviderWrapper = (props) => {
     seDeconnecter,
     sInscrire,
     ajouterEtablissement,
+    recevoirLieux,
+    recevoirQRCode,
     changementNom,
     changementNomEtablissement,
     changementPrenom,
@@ -281,6 +339,7 @@ const ProviderWrapper = (props) => {
     changementVilleEtablissement,
     changementCodePostal,
     changementCodePostalEtablissement,
+    changementTypeConnexion,
   };
 
   return (

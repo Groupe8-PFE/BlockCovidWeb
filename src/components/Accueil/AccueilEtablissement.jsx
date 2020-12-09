@@ -1,15 +1,27 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
+import { Redirect } from "react-router-dom";
+
 import BlockCovidContext from "../../contexts/BlockCovidContext";
-
-
+import LieuxList from "../LieuList/LieuxList";
 
 const AccueilEtablissement = () => {
-  const { seDeconnecter, token } = useContext(BlockCovidContext);
-
+  const { seDeconnecter, etablissement, lieux, recevoirLieux } = useContext(
+    BlockCovidContext
+  );
+  const token = localStorage.getItem("token");
+  if (token) {
+    recevoirLieux(etablissement.id);
+    return (
+      <div>
+        <h1> Bienvenue sur la page d'accueil de l'établissement </h1>
+        <LieuxList lieux={lieux}></LieuxList>
+        <button onClick={seDeconnecter}> Se deconnecter </button>
+      </div>
+    );
+  }
   return (
     <div>
-      <h1> Bienvenue sur la page d'accueil de l'établissement </h1>
-      <button onClick={seDeconnecter}> Se deconnecter </button>
+      <Redirect to="/" />
     </div>
   );
 };

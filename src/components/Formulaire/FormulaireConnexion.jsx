@@ -6,10 +6,12 @@ const FormulaireConnexion = () => {
   const {
     nouveauEmail,
     nouveauMotDePasse,
+    typeConnexion,
     seConnecter,
     sInscrire,
     changementEmail,
     changementMotDePasse,
+    changementTypeConnexion
   } = useContext(BlockCovidContext);
 
   return (
@@ -34,6 +36,12 @@ const FormulaireConnexion = () => {
                 onChange={changementMotDePasse}
                 placeholder="Mot De Passe"
               />
+            </div>
+            <div>
+              <select name="connexion" value={typeConnexion} onChange={changementTypeConnexion}>
+                <option value="medecin">Médecin</option>
+                <option value="etablissement">Établissement</option>
+              </select>
             </div>
             <div>
               <button type="submit"> Se connecter </button>
