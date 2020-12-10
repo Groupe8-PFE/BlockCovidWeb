@@ -66,19 +66,19 @@ const recevoirQRCode = (id) => {
 }
 
 const lieuxEtablissement = idEtablissement => {
-    const request = axios.get(`http://localhost:8000/api/etablissements/${idEtablissement}/lieus`)
+    const request = axios.get(`https://blockcovid-api.herokuapp.com/api/etablissements/${idEtablissement}/lieus`)
     const returnedValue = request.then(response => response.data)
     return returnedValue
 }
 
 const creeCodeQR = nouveauObjet => {
-    const request = axios.get(`http://localhost:8000/api/etablissements/${nouveauObjet.etablissement_id}/lieus/${nouveauObjet.lieu_id}`)
+    const request = axios.get(`https://blockcovid-api.herokuapp.com/api/etablissements/${nouveauObjet.etablissement_id}/lieus/${nouveauObjet.lieu_id}`)
     const returnedValue = request.then(response => response.data)
     return returnedValue
 }
 
 const creeLieu = nouveauObjet => {
-    const request = axios.post(`http://localhost:8000/api/etablissements/${nouveauObjet.etablissement_id}/lieus`, nouveauObjet, headers)
+    const request = axios.post(`https://blockcovid-api.herokuapp.com/api/etablissements/${nouveauObjet.etablissement_id}/lieus`, nouveauObjet, headers)
     return request.then(response => response.data)
 }
 
