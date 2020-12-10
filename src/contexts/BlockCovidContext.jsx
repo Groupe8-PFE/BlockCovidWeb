@@ -131,7 +131,10 @@ const ProviderWrapper = (props) => {
             history.push("/accueil/medecin");
             window.location.reload()
           }
-          else if (typeConnexion === "etablissement") history.push('/accueil/etablissement')
+          else if (typeConnexion === "etablissement") {
+            history.push('/accueil/etablissement')
+            window.location.reload()
+          }
         } else {
           history.push("/");
         }
