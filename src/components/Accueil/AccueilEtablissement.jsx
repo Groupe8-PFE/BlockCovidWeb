@@ -11,6 +11,7 @@ const AccueilEtablissement = () => {
   const token = localStorage.getItem("token");
   if (token) {
     recevoirLieux(etablissement.id);
+    console.log("coucou")
     return (
       <div>
         <h1> Bienvenue sur la page d'accueil de l'établissement </h1>

@@ -7,9 +7,9 @@ const AccueilMedecin = (props) => {
   const { seDeconnecter, medecin } = useContext(BlockCovidContext);
   const token = localStorage.getItem("token");
 
-  console.log("Medecin : ", medecin);
-  console.log("Token : ", token);
-  console.log("QR Code Accueil : ", props.QRCode.QRCode);
+  //console.log("Medecin : ", medecin);
+  //console.log("Token : ", token);
+  //console.log("QR Code Accueil : ", props.QRCode.QRCode);
   const base64data = btoa(unescape(encodeURIComponent(props.QRCode.QRCode)));
   if (token) {
     return (
