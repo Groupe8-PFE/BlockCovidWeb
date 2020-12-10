@@ -1,0 +1,6 @@
+#Test pour travis
+language: node_js
+node_js:
+  - "stable"
+script:
+  - yarn build
