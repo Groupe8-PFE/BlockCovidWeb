@@ -1,25 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import FormulaireLieu from "../Formulaire/FormulaireLieu"
 import BlockCovidContext from "../../contexts/BlockCovidContext";
 import LieuxList from "../LieuList/LieuxList";
 
-const AccueilEtablissement = () => {
-  const { seDeconnecter, etablissement, lieux, recevoirLieux } = useContext(
-    BlockCovidContext
-  );
+const AccueilEtablissement = (props) => {
+  const { etablissement } = useContext(BlockCovidContext);
   const token = localStorage.getItem("token");
+  console.log("Props lieu", props.lieux)
   if (token) {
-    recevoirLieux(etablissement.id);
     console.log("coucou")
     return (
       <div>
-        <h1> Bienvenue sur la page d'accueil de l'établissement </h1>
-        <div className="container" id="container">
-          <LieuxList lieux={lieux}></LieuxList>
-          <FormulaireLieu></FormulaireLieu>
-          <p></p>
-          <button onClick={seDeconnecter}> Se deconnecter </button>
+        <div class="text-center">
+          <h1> Bienvenue sur la page d'accueil de l'établissement </h1>
+          <h3>Salut {etablissement.nom_etablissement}, Ravie de te revoir !</h3>
+        </div>
+        <div>
+          <LieuxList lieux={props.lieux}></LieuxList>
         </div>
       </div>
     );

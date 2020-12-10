@@ -1,13 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import BlockCovidContext from "../../contexts/BlockCovidContext";
 
 const Menu = () => {
+  const { seDeconnecter, typeConnexion } = useContext(BlockCovidContext);
+  const token = localStorage.getItem("token");
   const padding = {
     paddingRight: 5,
   };
+  console.log("Type connexion menu", typeConnexion)
+  if (token && typeConnexion === "medecin") {
+    return(
+      <div>
+        <div class="menu">
+          <Link style={padding} to="/" onClick={seDeconnecter}>
+            Deconnexion
+          </Link>
+          <Link style={padding} to="/ajouterLieu">
+            Ajouter lieu
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  if(token) {
+    return(
+      <div>
+        <div class="menu">
+          <Link style={padding} to="/" onClick={seDeconnecter}>
+            Deconnexion
+          </Link>
+        </div>
+      </div>
+    )
+    
+  }
+
   return (
     <div>
-      <div>
+      <div class="menu">
         <Link style={padding} to="/">
           Connexion
         </Link>

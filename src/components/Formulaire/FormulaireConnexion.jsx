@@ -11,50 +11,61 @@ const FormulaireConnexion = () => {
     sInscrire,
     changementEmail,
     changementMotDePasse,
-    changementTypeConnexion
+    changementTypeConnexion,
   } = useContext(BlockCovidContext);
 
   return (
     <div>
       <h2>Bienvenue sur l'application BlockCovidWeb</h2>
-      <div className="container" id="container">
-        <div className="form-container sign-in-container">
-          <form className="form-left" onSubmit={seConnecter}>
-            <h1>Connexion</h1>
-            <div>
+      <div class="container login-container">
+        <div class="row">
+          <div class="col-md-6 login-form-1">
+            <form className="form-left" onSubmit={seConnecter}>
+              <h1>Connexion </h1><br/>
+              <div class="form-group">
+                <input
+                  type="mail"
+                  class="form-control"
+                  value={nouveauEmail}
+                  onChange={changementEmail}
+                  placeholder="Email"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  value={nouveauMotDePasse}
+                  onChange={changementMotDePasse}
+                  placeholder="Mot De Passe"
+                />
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-control"
+                  name="connexion"
+                  value={typeConnexion}
+                  onChange={changementTypeConnexion}
+                >
+                  <option value="medecin">Médecin</option>
+                  <option value="etablissement">Établissement</option>
+                </select>
+              </div><br/>
+              <div class="form-group text-center">
+                <input type="submit" class="btnSubmit" value="Se connecter" />
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6 login-form-2">
+            <h3>Si vous n'avez pas de compte ? <br/>
+              Inscrivez-vous !</h3>
+            <div class="form-group text-center">
               <input
-                type="mail"
-                value={nouveauEmail}
-                onChange={changementEmail}
-                placeholder="Email"
+                type="submit"
+                class="btnSubmit"
+                value="S'inscrire"
+                onClick={sInscrire}
               />
-            </div>
-            <div>
-              <input
-                type="password"
-                value={nouveauMotDePasse}
-                onChange={changementMotDePasse}
-                placeholder="Mot De Passe"
-              />
-            </div>
-            <div>
-              <select name="connexion" value={typeConnexion} onChange={changementTypeConnexion}>
-                <option value="medecin">Médecin</option>
-                <option value="etablissement">Établissement</option>
-              </select>
-            </div>
-            <div>
-              <button type="submit"> Se connecter </button>
-            </div>
-          </form>
-        </div>
-        <div className="overlay-container">
-          <div className="overlay">
-            <div className="overlay-panel overlay-right">
-              <p> Si vous n'avez pas de compte Inscrivez-vous! </p>
-              <button className="ghost" id="signUp" onClick={sInscrire}>
-                Inscription
-              </button>
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ const ProviderWrapper = (props) => {
   const [nouveauPrenom, setNouveauPrenom] = useState("");
   const [nouveauInami, setNouveauInami] = useState("");
   const [nouveauTelephone, setNouveauTelephone] = useState("");
+  const [nouveauTelephoneEtablissement, setNouveauTelephoneEtablissement] = useState("");
   const [nouveauEmail, setNouveauEmail] = useState("");
   const [nouveauEmailEtablissement, setNouveauEmailEtablissement] = useState(
     ""
@@ -39,7 +40,6 @@ const ProviderWrapper = (props) => {
   ] = useState("");
   const [nouveauDescription, setNouveauDescription] = useState("")
   const [ typeConnexion, setTypeConnexion ] = useState("medecin")
-  const [lieux, setLieux] = useState([])
   const history = useHistory();
   const token = localStorage.getItem("token");
 
@@ -171,17 +171,7 @@ const ProviderWrapper = (props) => {
     history.push("/inscription");
   };
 
-  const recevoirLieux = (id) => {
-    webService
-      .lieuxEtablissement(id)
-      .then((lieux) => {
-        console.log("Lieux recu : ", lieux)
-        setLieux(lieux)
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }
+  //useEffect(recevoirLieux, [etablissement])
 
   const ajouterLieu = (event) => {
     event.preventDefault();
@@ -195,6 +185,7 @@ const ProviderWrapper = (props) => {
       .then((lieuRenvoye) => {
         setNouveauNom("");
         setNouveauDescription("");
+        history.push('/accueil/etablissement')
       })
       .catch((error) => {
         console.warn(error);
@@ -236,6 +227,10 @@ const ProviderWrapper = (props) => {
 
   const changementTelephone = (e) => {
     setNouveauTelephone(e.target.value);
+  };
+
+  const changementTelephoneEtablissement = (e) => {
+    setNouveauTelephoneEtablissement(e.target.value);
   };
 
   const changementEmail = (e) => {
@@ -319,6 +314,10 @@ const ProviderWrapper = (props) => {
     })
   }, []);
 
+  useEffect(() => {
+    document.title = "Block Covid"
+ }, []);
+
  
 
   //console.log("rendues ", medecins.length, " medecins");
@@ -328,12 +327,12 @@ const ProviderWrapper = (props) => {
     medecin,
     etablissements,
     etablissement,
-    lieux,
     nouveauNom,
     nouveauNomEtablissement,
     nouveauPrenom,
     nouveauInami,
     nouveauTelephone,
+    nouveauTelephoneEtablissement,
     nouveauEmail,
     nouveauEmailEtablissement,
     nouveauMotDePasse,
@@ -354,7 +353,6 @@ const ProviderWrapper = (props) => {
     seDeconnecter,
     sInscrire,
     ajouterEtablissement,
-    recevoirLieux,
     ajouterLieu,
     genererCodeQR,
     changementNom,
@@ -362,6 +360,7 @@ const ProviderWrapper = (props) => {
     changementPrenom,
     changementInami,
     changementTelephone,
+    changementTelephoneEtablissement,
     changementEmail,
     changementEmailEtablissement,
     changementMotDePasse,

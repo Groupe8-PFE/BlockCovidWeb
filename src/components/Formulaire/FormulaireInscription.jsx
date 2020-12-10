@@ -9,6 +9,7 @@ const FormulaireInscription = () => {
     nouveauPrenom,
     nouveauInami,
     nouveauTelephone,
+    nouveauTelephoneEtablissement,
     nouveauEmail,
     nouveauEmailEtablissement,
     nouveauMotDePasse,
@@ -26,6 +27,7 @@ const FormulaireInscription = () => {
     changementPrenom,
     changementInami,
     changementTelephone,
+    changementTelephoneEtablissement,
     changementEmail,
     changementEmailEtablissement,
     changementMotDePasse,
@@ -41,139 +43,169 @@ const FormulaireInscription = () => {
   return (
     <div>
       <h2> Bienvenue sur la page d'Inscription</h2>
-      <div className="container-inscription" id="container">
-        <div className="form-container sign-in-container">
-          <form className="form-left" onSubmit={ajouterMedecin}>
-            <h1> Inscription Medecin</h1>
-            <div>
-              <input
-                value={nouveauNom}
-                onChange={changementNom}
-                placeholder="Nom"
-              />
-            </div>
-            <div>
-              <input
-                value={nouveauPrenom}
-                onChange={changementPrenom}
-                placeholder="Prenom"
-              />
-            </div>
-            <div>
-              <input
-                value={nouveauInami}
-                onChange={changementInami}
-                placeholder="Inami"
-              />
-            </div>
-            <div>
-              <input
-                value={nouveauTelephone}
-                onChange={changementTelephone}
-                placeholder="Telephone"
-              />
-            </div>
-            <div>
-              <input
-                type="mail"
-                value={nouveauEmail}
-                onChange={changementEmail}
-                placeholder="Mail"
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                value={nouveauMotDePasse}
-                onChange={changementMotDePasse}
-                placeholder="Mot de passe"
-              />
-            </div>
-            <div>
-              <h3>Adresse</h3>
-              <div>
+      <div class="container login-container">
+        <div class="row">
+          <div class="col-md-6 login-form-1">
+            <h3>Inscription médecin</h3>
+            <form onSubmit={ajouterMedecin}>
+              <div class="form-group">
                 <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nom *"
+                  value={nouveauNom}
+                  onChange={changementNom}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Prénom *"
+                  value={nouveauPrenom}
+                  onChange={changementPrenom}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Inami *"
+                  value={nouveauInami}
+                  onChange={changementInami}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Telephone *"
+                  value={nouveauTelephone}
+                  onChange={changementTelephone}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email *"
+                  value={nouveauEmail}
+                  onChange={changementEmail}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Mot de passe *"
+                  value={nouveauMotDePasse}
+                  onChange={changementMotDePasse}
+                />
+              </div><br/>
+              <h3>Adresse</h3>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Rue *"
                   value={nouveauRue}
                   onChange={changementRue}
-                  placeholder="Rue et numéro"
                 />
               </div>
-              <div>
+              <div class="form-group">
                 <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Ville *"
                   value={nouveauVille}
                   onChange={changementVille}
-                  placeholder="Ville"
                 />
               </div>
-              <div>
+              <div class="form-group">
                 <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Code postal *"
                   value={nouveauCodePostal}
                   onChange={changementCodePostal}
-                  placeholder="Code postal"
                 />
               </div>
-              <div>
-                <button type="submit"> S'inscrire </button>
+              <div class="form-group text-center">
+                <input type="submit" class="btnSubmit" value="S'inscrire" />
               </div>
-            </div>
-          </form>
-        </div>
-        <div className="overlay-container">
-          <div className="overlay">
-            <div className="overlay-panel overlay-right">
-              <form onSubmit={ajouterEtablissement}>
-                <h1> Inscription Etablissement </h1>
-                <div>
-                  <input
-                    value={nouveauNomEtablissement}
-                    onChange={changementNomEtablissement}
-                    placeholder="Nom de l'établissement"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="mail"
-                    value={nouveauEmailEtablissement}
-                    onChange={changementEmailEtablissement}
-                    placeholder="Mail"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="password"
-                    value={nouveauMotDePasseEtablissement}
-                    onChange={changementMotDePasseEtablissement}
-                    placeholder="Mot de passe"
-                  />
-                </div>
-                <h3>Adresse</h3>
-                <div>
-                  <input
-                    value={nouveauRueEtablissement}
-                    onChange={changementRueEtablissement}
-                    placeholder="Rue et numéro"
-                  />
-                </div>
-                <div>
-                  <input
-                    value={nouveauVilleEtablissement}
-                    onChange={changementVilleEtablissement}
-                    placeholder="Ville"
-                  />
-                </div>
-                <div>
-                  <input
-                    value={nouveauCodePostalEtablissement}
-                    onChange={changementCodePostalEtablissement}
-                    placeholder="Code postal"
-                  />
-                </div>
-                <button className="ghost" id="signUp">
-                  {" "}
-                  S'inscrire{" "}
-                </button>
-              </form>
-            </div>
+            </form>
+          </div>
+          <div class="col-md-6 login-form-2">
+            <h3>Inscription établissement</h3>
+            <form onSubmit={ajouterEtablissement}>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nom de l'établissement *"
+                  value={nouveauNomEtablissement}
+                  onChange={changementNomEtablissement}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Telephone *"
+                  value={nouveauTelephoneEtablissement}
+                  onChange={changementTelephoneEtablissement}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email *"
+                  value={nouveauEmailEtablissement}
+                  onChange={changementEmailEtablissement}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Mot de passe *"
+                  value={nouveauMotDePasseEtablissement}
+                  onChange={changementMotDePasseEtablissement}
+                />
+              </div><br/>
+              <h3>Adresse</h3>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Rue *"
+                  value={nouveauRueEtablissement}
+                  onChange={changementRueEtablissement}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Ville *"
+                  value={nouveauVilleEtablissement}
+                  onChange={changementVilleEtablissement}
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Code postal *"
+                  value={nouveauCodePostalEtablissement}
+                  onChange={changementCodePostalEtablissement}
+                />
+              </div>
+              <div class="form-group text-center">
+                <input type="submit" class="btnSubmit" value="S'inscrire" />
+              </div>
+            </form>
           </div>
         </div>
       </div>

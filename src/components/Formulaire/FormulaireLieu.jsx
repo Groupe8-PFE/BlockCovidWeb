@@ -3,43 +3,50 @@ import BlockCovidContext from "../../contexts/BlockCovidContext";
 import "./Formulaire.css";
 
 const FormulaireLieu = () => {
-    const {
-        nouveauNom,
-        nouveauDescription,
-        changementNom,
-        changementDescription,
-        ajouterLieu,
-    } = useContext(BlockCovidContext);
+  const {
+    nouveauNom,
+    nouveauDescription,
+    changementNom,
+    changementDescription,
+    ajouterLieu,
+  } = useContext(BlockCovidContext);
 
-    return (
-        <div>
-            <h3>Ajouter un lieu</h3>
-            <div>
-                <div>
-                    <form onSubmit={ajouterLieu}>
-                        <div>
-                            <input
-                                value={nouveauNom}
-                                onChange={changementNom}
-                                placeholder="Nom du lieu"
-                            />
-                        </div>
-                        <div>
-                            <input
-                                value={nouveauDescription}
-                                onChange={changementDescription}
-                                placeholder="Desciption du lieu"
-                            />
-                        </div>
-                        <div>
-                            <button type="submit"> Ajouter un lieu </button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
+  return (
+    <div>
+      <div class="container">
+        <div class="row ajout-container">
+          <div class="col-md-6 login-form-1">
+            <form className="form-center" onSubmit={ajouterLieu}>
+              <h1>Ajouter un lieu</h1>
+              <br />
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  value={nouveauNom}
+                  onChange={changementNom}
+                  placeholder="Nom du lieu"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  value={nouveauDescription}
+                  onChange={changementDescription}
+                  placeholder="Desciption du lieu"
+                />
+              </div>
+              <br />
+              <div class="form-group text-center">
+                <input type="submit" class="btnSubmit" value="Ajouter" />
+              </div>
+            </form>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default FormulaireLieu;

@@ -10,7 +10,6 @@ const AccueilMedecin = (props) => {
   //console.log("Medecin : ", medecin);
   //console.log("Token : ", token);
   //console.log("QR Code Accueil : ", props.QRCode.QRCode);
-  const base64data = btoa(unescape(encodeURIComponent(props.QRCode.QRCode)));
   if (token) {
     const base64data = btoa(unescape(encodeURIComponent(props.QRCode.QRCode)));
     return (

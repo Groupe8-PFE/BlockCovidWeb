@@ -4,9 +4,10 @@ import { Switch, Route } from "react-router-dom";
 import FormulaireInscription from "../Formulaire/FormulaireInscription";
 import Menu from "../Menu/Menu";
 import FormulaireConnexion from "../Formulaire/FormulaireConnexion";
-import AccueilEtablissement from "../Accueil/AccueilEtablissement";
-import AccueilMedecinController from "../Accueil/AccueilMedecinController";
+import AccueilMedecinContainer from "../Accueil/AccueilMedecinContainer";
 import QRCode from "../QRCode/QRCode"
+import AccueilEtablissementContainer from "../Accueil/AccueilEtablissementContainer";
+import FormulaireLieu from "../Formulaire/FormulaireLieu";
 
 // .catch(error => console.log(error))
 // Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
@@ -20,13 +21,16 @@ const App = () => {
           <FormulaireInscription />
         </Route>
         <Route path="/accueil/medecin">
-          <AccueilMedecinController />
+          <AccueilMedecinContainer />
         </Route>
         <Route path="/accueil/etablissement">
-          <AccueilEtablissement />
+          <AccueilEtablissementContainer />
         </Route>
         <Route path="/qrcode">
           <QRCode />
+        </Route>
+        <Route path="/ajouterLieu">
+          <FormulaireLieu />
         </Route>
         <Route path="/">
           <FormulaireConnexion />
