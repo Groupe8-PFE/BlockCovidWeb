@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import webService from "../services/webServices";
 
 const Context = React.createContext(null);
+console.log("boucle infinie Context")
 
 const ProviderWrapper = (props) => {
   const [medecin, setMedecin] = useState("");

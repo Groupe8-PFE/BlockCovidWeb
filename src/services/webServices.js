@@ -64,6 +64,7 @@ const etablissementCourant = () => {
 }
 
 const recevoirQRCode = (id) => {
+    console.log("boucle infinie")
     const request = axios.get(`${API_MEDECINS}/${id}`, { headers: {"Authorization" : `${token}`}})
     return request.then(response => response.data)
 }

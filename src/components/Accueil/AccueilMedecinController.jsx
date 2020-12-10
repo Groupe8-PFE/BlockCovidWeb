@@ -8,7 +8,7 @@ import webServices from "../../services/webServices"
 const AccueilMedecinController = () => {
     const { medecin } = useContext(BlockCovidContext);
     const [QRCode, setQRCode] = useState("")
-
+    console.log("boucle infinie Medecin controller")
         webServices
         .recevoirQRCode(medecin.id)
         .then((response) => {

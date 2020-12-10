@@ -11,6 +11,7 @@ import QRCode from "../QRCode/QRCode"
 // .catch(error => console.log(error))
 // Script2 package.json --> "deploy": "cp -a BlockCovidWeb/build/. public/", test
 const App = () => {
+  console.log("boucle infinie route")
   return (
     <div>
       <Menu />
