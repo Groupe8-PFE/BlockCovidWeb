@@ -127,11 +127,15 @@ const ProviderWrapper = (props) => {
             "token",
             "Bearer " + response.token
           );
-          if(typeConnexion === "medecin") history.push("/accueil/medecin");
+          if(typeConnexion === "medecin") { 
+            history.push("/accueil/medecin");
+            window.location.reload()
+          }
           else if (typeConnexion === "etablissement") history.push('/accueil/etablissement')
         } else {
           history.push("/");
         }
+        //window.location.reload()
       })
       .catch((error) => {
         console.warn(error);
@@ -314,6 +318,8 @@ const ProviderWrapper = (props) => {
       console.log(error);
     })
   }, []);
+
+ 
 
   //console.log("rendues ", medecins.length, " medecins");
 
