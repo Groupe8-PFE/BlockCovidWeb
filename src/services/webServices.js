@@ -1,15 +1,11 @@
 import axios from 'axios'
-/*
-const API_MEDECINS = 'https://blockcovid-api.herokuapp.com/api/medecins';
-const API_LOGIN = 'https://blockcovid-api.herokuapp.com/api/login';
-*/
 
-const API_MEDECINS = 'http://localhost:8000/api/medecins';
-const API_MEDECIN = 'http://localhost:8000/api/authMedecin';
-const API_LOGIN_MEDECIN = 'http://localhost:8000/api/loginMedecin';
-const API_LOGIN_ETABLISSEMENT = 'http://localhost:8000/api/loginEtablissement';
-const API_ETABLISSEMENTS = 'http://localhost:8000/api/etablissements';
-const API_ETABLISSEMENT = 'http://localhost:8000/api/authEtablissement';
+const API_MEDECINS = 'https://blockcovid-api.herokuapp.com/api/medecins';
+const API_MEDECIN = 'https://blockcovid-api.herokuapp.com/api/authMedecin';
+const API_LOGIN_MEDECIN = 'https://blockcovid-api.herokuapp.com/api/loginMedecin';
+const API_LOGIN_ETABLISSEMENT = 'https://blockcovid-api.herokuapp.com/api/loginEtablissement';
+const API_ETABLISSEMENTS = 'https://blockcovid-api.herokuapp.com/api/etablissements';
+const API_ETABLISSEMENT = 'https://blockcovid-api.herokuapp.com/api/authEtablissement';
 
 
 const token = localStorage.getItem("token");
