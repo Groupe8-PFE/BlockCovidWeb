@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+Bienvenue sur le Read_Me , ici nous allons vous guider afin de pouvoir lancer et utiliser l'application Web et Mobile de BlockCovid.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Contexte: 
+    Nous avons codé l'application coté front-end et mobile sur VisualStudioCode,
+    le back-end sur RubyMines. Nous vous recommandons de regarder le code dans ces IDE. 
 
-## Available Scripts
+Lancement :
+    Nous vous conseillons de creer un nouveau dossier. Afin de lancer l'application, il faut tout d'abord avoir accès au code. 
+    Ceci est fait via les lignes de commandes suivantes :
+        BlockCovidWeb: git clone https://github.com/Groupe8-PFE/BlockCovidWeb.git
+        BlockCovidAPI: git clone https://github.com/Groupe8-PFE/BlockCovidAPI.git
+        BlockCovidMobile: git clone https://github.com/Groupe8-PFE/BlockCovidMobile.git
 
-In the project directory, you can run:
+    ATTENTION : Pour les utilisateur de Windows, la "gem 'exponent-server-sdk'" risque de poser des problèmes de compatibilité. 
+    Désactivez-la si nécéssaire mais les notifications seront désactivées.
 
-### `yarn start`
+    Une fois les 3 commandes entrées, vous aurez 3 dossiers. 
+    Vuus allez devoir  ensuite mettre à jour vos packages dans chaque dossier. Chaque application à sa propre ligne de commande à executer.
+    Ouvrer dans un terminal le dossier de l'application en question et lancer ces commandes:
+        BlockCovidWeb: npm install
+        BlockCovidAPI: bundle install 
+        BlockCovidMobile:expo install * (ne pas oublier d'installer le client expo cli sur votre ordinateur avant tout chose : npm install --global expo-cli )
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+	Sur l'application blockCovidMobile, nous avons utilisé le client expo pour tester l'application sur mobile,
+	nous vous conseillons d'installer l'application "Expo" sur le Playstore si vous désirez l'utiliser de cette façon
+    
+    Maintenant que vos applications fonctionnent, il suffit de les lancer, encore une fois, chaque application à sa propre commande de lancement.
+    Ouvrer dans un terminal le dossier de l'application en question et lancer ces commandes:
+        BlockCovidWeb: npm start
+        BlockCovidAPI: rails server -p 8000 
+        BlockCovidMobile: expo start 
+    
+Voilà, maintenant tout devrait fonctionner, vous pouvez utiliser votre navigateur préféré.
+(nous n'avons pas testé sur tous les navigateurs mais Chrome et Mozilla fonctionnent avec l'application)
+Il ne vous reste plus qu'à taper dans l'url du navigateur: "localhost:3000" et vous êtes partis. 
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+*Si expo install ne marche pas voici le lien complet des installations à effectuer :
 
-### `yarn build`
+expo install @react-navigation/native
+expo install react-native-gesture-handler
+expo install react-native-reanimated
+expo install react-native-screens
+expo install react-native-safe-area-context
+expo install @react-native-community/masked-view
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+expo install @react-navigation/stack 

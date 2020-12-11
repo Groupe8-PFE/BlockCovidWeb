@@ -9,6 +9,7 @@ import QRCode from "../QRCode/QRCode";
 import AccueilEtablissementContainer from "../Accueil/AccueilEtablissementContainer";
 import FormulaireLieu from "../Formulaire/FormulaireLieu";
 
+//N'hésitez pas à regarder le ReadMe si il y a des problèmes d'installation.
 const App = () => {
   return (
     <div>
