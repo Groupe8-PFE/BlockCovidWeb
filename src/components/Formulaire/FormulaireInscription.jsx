@@ -101,7 +101,8 @@ const FormulaireInscription = () => {
                   value={nouveauMotDePasse}
                   onChange={changementMotDePasse}
                 />
-              </div><br/>
+              </div>
+              <br />
               <h3>Adresse</h3>
               <div class="form-group">
                 <input
@@ -173,7 +174,8 @@ const FormulaireInscription = () => {
                   value={nouveauMotDePasseEtablissement}
                   onChange={changementMotDePasseEtablissement}
                 />
-              </div><br/>
+              </div>
+              <br />
               <h3>Adresse</h3>
               <div class="form-group">
                 <input

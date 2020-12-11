@@ -1,30 +1,25 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react";
 
 import BlockCovidContext from "../../contexts/BlockCovidContext";
-import AccueilEtablissement from "./AccueilEtablissement"
-import webServices from "../../services/webServices"
+import AccueilEtablissement from "./AccueilEtablissement";
+import webServices from "../../services/webServices";
 
 const AccueilEtablissementContainer = () => {
-    const { etablissement } = useContext(BlockCovidContext)
-    const [lieux, setLieux] = useState([])
+  const { etablissement } = useContext(BlockCovidContext);
+  const [lieux, setLieux] = useState([]);
 
-    const recevoirLieux = () => {
-        webServices
-          .lieuxEtablissement(etablissement.id)
-          .then((reponse) => {
-            console.log("Lieux recu : ", reponse)
-            setLieux(reponse)
-          })
-          .catch((error) => {
-            console.log(error);
-        })
-    }
+  const recevoirLieux = () => {
+    webServices
+      .lieuxEtablissement(etablissement.id)
+      .then((reponse) => {
+        setLieux(reponse);
+      })
+      .catch((error) => {});
+  };
 
-    useEffect(recevoirLieux, [etablissement])
+  useEffect(recevoirLieux, [etablissement]);
 
-    return (
-        <AccueilEtablissement lieux={lieux}/>
-    )
-}
+  return <AccueilEtablissement lieux={lieux} />;
+};
 
-export default AccueilEtablissementContainer
+export default AccueilEtablissementContainer;

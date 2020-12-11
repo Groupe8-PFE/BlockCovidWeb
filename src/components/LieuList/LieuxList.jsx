@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import BlockCovidContext from "../../contexts/BlockCovidContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./LieuxList.css"
+import "./LieuxList.css";
 
 const LieuxList = (props) => {
   const { genererCodeQR } = useContext(BlockCovidContext);

@@ -21,7 +21,8 @@ const FormulaireConnexion = () => {
         <div class="row">
           <div class="col-md-6 login-form-1">
             <form className="form-left" onSubmit={seConnecter}>
-              <h1>Connexion </h1><br/>
+              <h1>Connexion </h1>
+              <br />
               <div class="form-group">
                 <input
                   type="mail"
@@ -50,15 +51,18 @@ const FormulaireConnexion = () => {
                   <option value="medecin">Médecin</option>
                   <option value="etablissement">Établissement</option>
                 </select>
-              </div><br/>
+              </div>
+              <br />
               <div class="form-group text-center">
                 <input type="submit" class="btnSubmit" value="Se connecter" />
               </div>
             </form>
           </div>
           <div class="col-md-6 login-form-2">
-            <h3>Si vous n'avez pas de compte ? <br/>
-              Inscrivez-vous !</h3>
+            <h3>
+              Si vous n'avez pas de compte ? <br />
+              Inscrivez-vous !
+            </h3>
             <div class="form-group text-center">
               <input
                 type="submit"

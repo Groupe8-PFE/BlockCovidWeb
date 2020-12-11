@@ -2,22 +2,20 @@ import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 
 import BlockCovidContext from "../../contexts/BlockCovidContext";
-import "./AccueilMedecin.css"
+import "./AccueilMedecin.css";
 
 const AccueilMedecin = (props) => {
   const { medecin } = useContext(BlockCovidContext);
   const token = localStorage.getItem("token");
 
-  //console.log("Medecin : ", medecin);
-  //console.log("Token : ", token);
-  //console.log("QR Code Accueil : ", props.QRCode.QRCode);
   if (token) {
     const base64data = btoa(unescape(encodeURIComponent(props.QRCode.QRCode)));
     return (
       <div>
         <div class="text-center">
           <h1> Bienvenue sur la page d'accueil du médecin </h1>
-          <h3>Salut {medecin.nom}, Ravie de vous revoir !</h3><br/>
+          <h3>Salut {medecin.nom}, Ravie de vous revoir !</h3>
+          <br />
         </div>
         <div class="container bootstrap snippets bootdey">
           <div class="panel-body inf-content">
@@ -65,9 +63,7 @@ const AccueilMedecin = (props) => {
                             Email
                           </strong>
                         </td>
-                        <td class="text-primary">
-                          {medecin.email}
-                        </td>
+                        <td class="text-primary">{medecin.email}</td>
                       </tr>
                     </tbody>
                   </table>

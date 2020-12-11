@@ -1,15 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
-import FormulaireLieu from "../Formulaire/FormulaireLieu"
 import BlockCovidContext from "../../contexts/BlockCovidContext";
 import LieuxList from "../LieuList/LieuxList";
 
 const AccueilEtablissement = (props) => {
   const { etablissement } = useContext(BlockCovidContext);
   const token = localStorage.getItem("token");
-  console.log("Props lieu", props.lieux)
+
   if (token) {
-    console.log("coucou")
     return (
       <div>
         <div class="text-center">

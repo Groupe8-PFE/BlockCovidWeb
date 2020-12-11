@@ -8,9 +8,9 @@ const Menu = () => {
   const padding = {
     paddingRight: 5,
   };
-  console.log("Type connexion menu", typeConnexion)
+  
   if (token && typeConnexion === "medecin") {
-    return(
+    return (
       <div>
         <div class="menu">
           <Link style={padding} to="/" onClick={seDeconnecter}>
@@ -21,11 +21,11 @@ const Menu = () => {
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
-  if(token) {
-    return(
+  if (token) {
+    return (
       <div>
         <div class="menu">
           <Link style={padding} to="/" onClick={seDeconnecter}>
@@ -33,8 +33,7 @@ const Menu = () => {
           </Link>
         </div>
       </div>
-    )
-    
+    );
   }
 
   return (
