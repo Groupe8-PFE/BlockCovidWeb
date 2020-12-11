@@ -23,7 +23,7 @@ const LieuxList = (props) => {
                   <thead>
                     <tr>
                       <th>Lieu</th>
-                      <th class="action text-right">Généré Code QR</th>
+                      <th class="action text-right">Générer Code QR</th>
                     </tr>
                   </thead>
                   <tbody>

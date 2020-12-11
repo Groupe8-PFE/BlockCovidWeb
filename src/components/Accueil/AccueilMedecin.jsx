@@ -16,7 +16,7 @@ const AccueilMedecin = (props) => {
     return (
       <div>
         <div class="text-center">
-          <h1> Bienvenue sur la page d'accueil de l'établissement </h1>
+          <h1> Bienvenue sur la page d'accueil du médecin </h1>
           <h3>Salut {medecin.nom}, Ravie de vous revoir !</h3><br/>
         </div>
         <div class="container bootstrap snippets bootdey">
